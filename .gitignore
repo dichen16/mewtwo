@@ -7,3 +7,7 @@
 
 # for python
 **/__pycache__
+
+# for haskell
+**/*.hi
+**/*.o
