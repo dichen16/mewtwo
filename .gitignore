@@ -1,0 +1,9 @@
+# for rust
+**/target
+**/Cargo.lock
+
+# for c++ 
+**/build
+
+# for python
+**/__pycache__
