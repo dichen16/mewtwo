@@ -1,0 +1,8 @@
+[package]
+name = "async"
+version = "0.1.0"
+authors = ["Di Chen <dichen@redhat.com>"]
+edition = "2018"
+
+[dependencies]
+futures = "0.1"
