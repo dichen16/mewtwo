@@ -6,6 +6,7 @@ use futures::future;
 use hyper::rt::{Future, Stream};
 use hyper::service::service_fn;
 use hyper::{Body, Method, Request, Response, Server, StatusCode};
+use std::str;
 
 
 /// We need to return different futures depending on the route matched,
@@ -63,20 +64,16 @@ fn echo(req: Request<Body>) -> BoxFut {
 
         //print 
         (&Method::POST, "/print") => {
-            req.into_body().concat2().map(|chunk| {
-                let body = chunk.to_vec(); 
-                println!("{:?}", body);
-                ()
-            });
-
-
+            let str_body = req.into_body().concat2()
+                .map( move |chunk| {
+                let body = chunk.iter().cloned().collect::<Vec<u8>>();
+                println!("{:?}", str::from_utf8(&body).unwrap());
+                *response.body_mut() = Body::from(body);
+                response
+                });
+            return Box::new(str_body);
         }
       
-        
-            
-            
-        
-
         // The 404 Not Found route...
         _ => {
             *response.status_mut() = StatusCode::NOT_FOUND;
