@@ -1,0 +1,14 @@
+- name: Download storage template
+  get_url:
+    url: "https://raw.githubusercontent.com/release-engineering/exodus-lambda/master/support/reftest/reftest"
+    dest: "{{ cloudformation_workdir }}/reftest"
+    force: yes
+
+- name: Download storage template
+  get_url:
+    url: "https://raw.githubusercontent.com/release-engineering/exodus-lambda/master/support/reftest/data.yml"
+    dest: "{{ cloudformation_workdir }}/data.yml"
+    force: yes
+
+- include_tasks: test.yaml
+  when: '"{{ env }}" != "dev"'

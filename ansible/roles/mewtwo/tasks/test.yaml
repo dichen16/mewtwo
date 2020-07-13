@@ -1,0 +1,5 @@
+---
+- name: This command will change the working directory to somedir/.
+  shell:
+    cmd: ./reftest --help
+    chdir: "{{ cloudformation_workdir }}"

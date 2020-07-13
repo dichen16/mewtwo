@@ -1,0 +1,4 @@
+# Ansible working directory for template files
+cloudformation_workdir: "{{ '/home/dichen/playG/tom' }}"
+
+env: ""
