@@ -36,6 +36,7 @@ func main() {
 	fmt.Println("Hello World! This is my first Go program")
 	// ":=" A short variable declaration uses this syntax
 	a, b := 15, 10
+	fmt.Printf("input: %v, %v\n", a, b)
 
 	// function call
 	sum, diff := calc(a, b)
